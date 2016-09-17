@@ -30,9 +30,9 @@ def giving_score():
     parsed_response['result'] = result_dictionary[parsed_response['result']]
 
     if parsed_response['result']=="Secure":
-        score_json = {'result':"Secure", 'score':parsed_response['score']}
+        score_json = {'result':"Secure", 'score':parsed_response['score'], 'tests':parsed_response['tests']}
     else:
-        score_json = {'result':parsed_response['result'], 'score':"none"}
+        score_json = {'result':parsed_response['result'], 'score':"none", 'tests':parsed_response['tests']}
 
     score=5
     return jsonify(score_json);
