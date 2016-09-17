@@ -54,7 +54,7 @@
           <form class="form-signin"  method="post" role="form">
              <input type="text" name="domain" class="form-control" placeholder="Enter domain name" required autofocus>
             <br>
-             <button class="btn btn-lg btn-primary btn-block" type="button">Check DNS Score </button>
+             <button class="btn btn-lg btn-primary btn-block" type="button">Check DNS Sec Score </button>
          </form>
 
           <br>
@@ -74,6 +74,12 @@
               <div class="square"><p>Insecure</p></div>
               <br>
           </div>
+              <div class="container" id="FTE">
+              <div class="square"  id="score-square"><span class="glyphicon glyphicon-remove" id="cross" aria-hidden="true"></span>
+              </div>
+              <div class="square"><p id="FTEtext"></p></div>
+              <br>
+          </div>
           </div>
           <div class="container" id="testResults">
 
@@ -84,7 +90,7 @@
       </div>
 
       <footer class="footer">
-        <p>&copy; our team @hackZurich 2016</p>
+        <p>&copy; floky 2016</p>
       </footer>
 
     </div> <!-- /container -->

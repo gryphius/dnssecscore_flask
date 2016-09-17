@@ -2,11 +2,13 @@ var main = function() {
     $('#Secure').hide();
     $('#Insecure').hide();
     $('#testResults').hide();
+    $('#FTE').hide();
     
   var scoreOutput = function (response) {
       var result = response.result;
       var score = response.score;
-      element = document.getElementById('securevalue')
+      element = document.getElementById('securevalue');
+      FTEtext = document.getElementById('FTEtext');
 
       console.log(result);
       if(result==="Secure"){
@@ -16,15 +18,20 @@ var main = function() {
       else if(result==="Insecure"){
           $('#Insecure').show();
       }
+
+      else{
+          $('#FTE').show();
+          console.log(result);
+          FTEtext.innerHTML = result;
+
+      }
   };
 
   var testOutput = function (response) {
       $('#testResults').show();
       var tests = response.tests;
       var progressbars = {'good': '"progress-bar progress-bar-success"', 'neutral': '"progress-bar progress-bar-info"',
-      'bad':'"progress-bar progress-bar-warning"','warning':'"progress-bar progress-bar-danger"'}
-      // var barcolors = {'good': '0088CC', 'neutral': '51A351', 'bad': 'F89406', 'warning': 'BD362F'}
-      console.log(tests);
+      'bad':'"progress-bar progress-bar-danger"','warning':'"progress-bar progress-bar-warning"'}
       for(i=0; i<tests.length; i++){
           console.log(progressbars[(tests[i].result_type)]);
           $('#testResults').append($( "<div class='well' >" + "<p style='font-size:14px; font-weight:bold;'>" + tests[i].name + "</p>" +
@@ -40,12 +47,15 @@ var main = function() {
       $('#Secure').hide();
       $('#Insecure').hide();
       var domainname = $('#txtDomain').val();
+      var testOutputs = document.getElementById('testResults');
+      if (testOutputs.innerHTML != null) {
+          testOutputs.innerHTML = null
+      }
       $.ajax({
           url: '/domain_submitted',
           data: $('form').serialize(),
           type: 'POST',
           success: function(response) {
-              console.log(response);
               scoreOutput(response);
               testOutput(response);
           },

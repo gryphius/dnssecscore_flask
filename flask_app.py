@@ -14,6 +14,9 @@ def send_static(filename):
 # def hello_world():
 #     return app.send_static_file('index.html')
 
+@app.route('/')
+def send_index():
+    return send_from_directory(app.static_folder, 'index.html')
 
 @app.route('/domain_submitted', methods=['POST', 'GET'])
 def giving_score():
