@@ -3,6 +3,24 @@ var main = function() {
     $('#Insecure').hide();
     $('#testResults').hide();
     $('#FTE').hide();
+
+/*  $("#inputfield").keyup(function(event){
+      console.log("keypresses");
+    if(event.keyCode === 13){
+        console.log("detected enter press");
+        $('#dnsbutton').click();
+    }
+  });*/
+
+    document.getElementById('inputfield').onkeypress = function(e){
+    if (!e) e = window.event;
+    var keyCode = e.keyCode || e.which;
+    if (keyCode == '13'){
+      // Enter pressed
+      $('#dnsbutton').click();
+      return false;
+    }
+  };
     
   var scoreOutput = function (response) {
       var result = response.result;
@@ -37,11 +55,12 @@ var main = function() {
           $('#testResults').append($( "<div class='well' >" + "<p style='font-size:14px; font-weight:bold;'>" + tests[i].name + "</p>" +
                   "<p style='font-size:14px;'>" + tests[i].messages + "</p>" +
                   "<div class=" + progressbars[tests[i].result_type] + " role='progressbar' aria-valuenow='40'aria-valuemin='0' aria-valuemax='100' style='width:100%'>"
-              + "result type: " + tests[i].result_type  +"</div>" +
+               + tests[i].result_type  +"</div>" +
               "</div>" ))
       }
 
   };
+
     
   $('button').click(function() {
       $('#Secure').hide();
