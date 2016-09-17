@@ -1,20 +1,93 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../../favicon.ico">
+
     <title>dnssecscore</title>
-    <link rel="stylesheet" type="text/css" href="main.css">
-    <!-- Latest compiled and minified CSS -->
+
+    <!-- Custom styles for this template -->
+    <link rel="stylesheet" type="text/css" href="./style/main.css" >
+
+      <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 
-    <!-- jQuery library -->
+<!-- jQuery library -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 
-    <!-- Latest compiled JavaScript -->
+<!-- Latest compiled JavaScript -->
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-</head>
-<body>
+
+    <script src="./app.js"></script>
+  </head>
+
+  <body>
+
+    <div class="container">
+      <div class="header clearfix">
+        <nav>
+          <ul class="nav nav-pills pull-xs-right">
+            <li class="nav-item">
+              <a class="nav-link active" href="#">Home <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">About</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Contact</a>
+            </li>
+          </ul>
+        </nav>
+        <h3 class="text-muted">DNS Security Score</h3>
+      </div>
+
+      <div class="jumbotron">
+       <!-- <h3 class="display-3">Check Your DNS Score </h3> -->
+        <p class="lead"></p>
+          <form class="form-signin"  method="post" role="form">
+             <input type="text" name="domain" class="form-control" placeholder="Enter domain name" required autofocus>
+            <br>
+             <button class="btn btn-lg btn-primary btn-block" type="button">Check DNS Score </button>
+         </form>
+
+          <br>
+          <div class="container" id="scoreOutput">
+          <div class="container" id="Secure">
+                <div class="square"  id="score-square"><span class="glyphicon glyphicon-ok" id="tick" aria-hidden="true"></span>
+                </div>
+                <div class="square"><p>Secure</p></div>
+              <br>
+              <div class="square">
+              <p id="securevalue"></p>
+              </div>
+          </div>
+          <div class="container" id="Insecure">
+              <div class="square"  id="score-square"><span class="glyphicon glyphicon-remove" id="cross" aria-hidden="true"></span>
+              </div>
+              <div class="square"><p>Insecure</p></div>
+              <br>
+          </div>
+          </div>
+
+      </div>
+
+      <footer class="footer">
+        <p>&copy; our team @hackZurich 2016</p>
+      </footer>
+
+    </div> <!-- /container -->
 
 
-</body>
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <!--<script src="../../assets/js/ie10-viewport-bug-workaround.js"></script> -->
+  </body>
 </html>
+>
