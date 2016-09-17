@@ -48,6 +48,7 @@
       <file leaf-file-name="app.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/static/app.js">
           <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
             <state relative-caret-position="75">
               <caret line="5" column="4" selection-start-line="5" selection-start-column="4" selection-end-line="5" selection-end-column="4" />
               <folding>
@@ -55,6 +56,15 @@
                 <marker date="1474142046000" expanded="true" signature="1445:1478" ph="..." />
                 <marker date="1474142046000" expanded="true" signature="1538:1553" ph="..." />
                 <marker date="1474142046000" expanded="true" signature="1743:1753" ph="..." />
+=======
+            <state relative-caret-position="270">
+              <caret line="18" column="22" selection-start-line="18" selection-start-column="22" selection-end-line="18" selection-end-column="22" />
+              <folding>
+                <marker date="1474141406000" expanded="true" signature="1640:1655" ph="..." />
+                <marker date="1474141406000" expanded="true" signature="1640:1673" ph="..." />
+                <marker date="1474141406000" expanded="true" signature="1733:1748" ph="..." />
+                <marker date="1474141406000" expanded="true" signature="1938:1948" ph="..." />
+>>>>>>> 03980d3008ca69f4f60209d26f5adc9bd44d13ef
               </folding>
             </state>
           </provider>
@@ -524,6 +534,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/static/app.js">
       <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
         <state relative-caret-position="75">
           <caret line="5" column="4" selection-start-line="5" selection-start-column="4" selection-end-line="5" selection-end-column="4" />
           <folding>
@@ -531,6 +542,15 @@
             <marker date="1474142046000" expanded="true" signature="1445:1478" ph="..." />
             <marker date="1474142046000" expanded="true" signature="1538:1553" ph="..." />
             <marker date="1474142046000" expanded="true" signature="1743:1753" ph="..." />
+=======
+        <state relative-caret-position="270">
+          <caret line="18" column="22" selection-start-line="18" selection-start-column="22" selection-end-line="18" selection-end-column="22" />
+          <folding>
+            <marker date="1474141406000" expanded="true" signature="1640:1655" ph="..." />
+            <marker date="1474141406000" expanded="true" signature="1640:1673" ph="..." />
+            <marker date="1474141406000" expanded="true" signature="1733:1748" ph="..." />
+            <marker date="1474141406000" expanded="true" signature="1938:1948" ph="..." />
+>>>>>>> 03980d3008ca69f4f60209d26f5adc9bd44d13ef
           </folding>
         </state>
       </provider>

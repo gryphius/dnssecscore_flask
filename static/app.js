@@ -3,6 +3,24 @@ var main = function() {
     $('#Insecure').hide();
     $('#testResults').hide();
     $('#FTE').hide();
+
+/*  $("#inputfield").keyup(function(event){
+      console.log("keypresses");
+    if(event.keyCode === 13){
+        console.log("detected enter press");
+        $('#dnsbutton').click();
+    }
+  });*/
+
+    document.getElementById('inputfield').onkeypress = function(e){
+    if (!e) e = window.event;
+    var keyCode = e.keyCode || e.which;
+    if (keyCode == '13'){
+      // Enter pressed
+      $('#dnsbutton').click();
+      return false;
+    }
+  };
     
 
     document.getElementById('inputfield').onkeypress = function(e){
