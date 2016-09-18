@@ -35,59 +35,32 @@
         <nav>
           <ul class="nav nav-pills pull-xs-right">
             <li class="nav-item">
-              <a class="nav-link active" href="index.html">Home <span class="sr-only">(current)</span></a>
+              <a class="nav-link active" href="index.html">Home</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="about.html">About</a>
+              <a class="nav-link" href="about.html">About <span class="sr-only">(current)</span></a>
             </li>
           </ul>
         </nav>
-        <h3 class="text-muted">DNSSEC Score</h3>
       </div>
 
       <div class="jumbotron">
        <!-- <h3 class="display-3">Check Your DNS Score </h3> -->
         <p class="lead"></p>
-
-          <form class="form-signin"  method="post" role="form">
-             <input type="text" name="domain" id="inputfield" class="form-control" placeholder="Enter domain name" required autofocus>
-            <br />
-              <i>Example: dnssecscore.com</i>
-              <br /><br />
-             <button class="btn btn-lg btn-primary btn-block" type="button" id="dnsbutton">Check DNSSEC Score </button>
-         </form>
-
-          <br>
-          <div class="container" id="scoreOutput">
-          <div class="container" id="Secure">
-                <div class="square"  id="score-square"><span class="glyphicon glyphicon-ok" id="tick" aria-hidden="true"></span>
-                </div>
-                <div class="square"><p>Secure</p></div>
-              <br>
-              <div class="square">
-              <p id="securevalue"></p>
-              </div>
-          </div>
-          <div class="container" id="Insecure">
-              <div class="square"  id="score-square"><span class="glyphicon glyphicon-remove" id="cross" aria-hidden="true"></span>
-              </div>
-              <div class="square"><p>Insecure</p></div>
-              <br>
-          </div>
-              <div class="container" id="FTE">
-              <div class="square"  id="score-square"><span class="glyphicon glyphicon-remove" id="cross" aria-hidden="true"></span>
-              </div>
-              <div class="square"><p id="FTEtext"></p></div>
-              <br>
-          </div>
-          </div>
-          <div class="container" id="testResults">
-
-          </div>
-
-
-
+          <h3>DNSSEC Score</h3>
       </div>
+        <div>
+            <p>This site analyses your domain to find out if it is properly protected by <a href="https://www.icann.org/resources/pages/dnssec-qaa-2014-01-29-en" target="_new">DNSSEC</a></p>
+
+            <p>We focus on scoring your DNSSEC setup based on the current best practises (RFC conformity , key sizes, ..)
+              These other resources might be helpful to debug validation failures:
+              <UL>
+            <LI><a href="http://dnssec-debugger.verisignlabs.com/" target="_new">VERISIGN's DNSSEC debugger</a></LI>
+            <LI><a href="http://dnsviz.net/" target="_new">DNSViz</a></LI>
+            </UL>
+          </p>
+
+        </div>
 
       <footer class="footer">
         <p>&copy; floki 2016</p>
