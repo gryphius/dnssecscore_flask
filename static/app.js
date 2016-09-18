@@ -63,7 +63,7 @@ var main = function() {
       'bad':'"progress-bar progress-bar-danger"','warning':'"progress-bar progress-bar-warning"'}
       for(i=0; i<tests.length; i++){
           console.log(progressbars[(tests[i].result_type)]);
-          $('#testResults').append($( "<div class='well' >" + "<p style='font-size:14px; font-weight:bold;'>" + tests[i].name + "</p>" +
+          $('#testResults').append($( "<div class='well' title='"+tests[i].description+"'>" + "<p style='font-size:14px; font-weight:bold;'>" + tests[i].name + "</p>" +
                   "<p style='font-size:14px;'>" + tests[i].messages + "</p>" +
                   "<div class=" + progressbars[tests[i].result_type] + " role='progressbar' aria-valuenow='40'aria-valuemin='0' aria-valuemax='100' style='width:100%'>"
                + tests[i].result_type  +"</div>" +

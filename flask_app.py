@@ -38,7 +38,7 @@ def giving_score():
         score_json = {'result':parsed_response['result'], 'score':"none", 'tests':parsed_response['tests']}
 
     score=5
-    return jsonify(score_json);
+    return jsonify(score_json)
     #return score_response
 
 
