@@ -28,7 +28,7 @@ def giving_score():
     parsed_response = json.loads(score_response)
     print(parsed_response)
     print(parsed_response['result'])
-    result_dictionary = {"S":"Secure", "I": "Insecure", "F": "Validation Error", "T":"Trust issue", "E": "Error while sunning test"}
+    result_dictionary = {"S":"Secure", "I": "Insecure", "F": "Validation Error", "T":"Trust issue", "E": "Error while running test"}
 
     parsed_response['result'] = result_dictionary[parsed_response['result']]
 
