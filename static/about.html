@@ -50,20 +50,128 @@
           <h3>DNSSEC Score</h3>
       </div>
         <div>
-            <p>This site analyses your domain to find out if it is properly protected by <a href="https://www.icann.org/resources/pages/dnssec-qaa-2014-01-29-en" target="_new">DNSSEC</a></p>
-
-            <p>We focus on scoring your DNSSEC setup based on the current best practises (RFC conformity , key sizes, ..)
-              These other resources might be helpful to debug validation failures:
-              <UL>
-            <LI><a href="http://dnssec-debugger.verisignlabs.com/" target="_new">VERISIGN's DNSSEC debugger</a></LI>
-            <LI><a href="http://dnsviz.net/" target="_new">DNSViz</a></LI>
-            </UL>
-          </p>
+            <p>This site tries to provide a testset for DNSSEC similar to the qualys test for SSL services. While other sites focus on debugging validation failures we try
+              to identify possible improvements in a working DNSSEC setup. Note that these recommendations generally apply to second level domains. Some of the suggestions (for example NSEC3 opt-out,
+              combined signing key, ..) do NOT apply for TLD's.
+            </p>
 
         </div>
 
+      <h2>Checks</h2>
+      <table>
+        <th>
+          <td>Check</td>
+          <td>Description</td>
+          <td>More Information</td>
+        </th>
+        <tr>
+          <td>Are we signed</td>
+          <td>Checks if the zone contains a DNSKEY rrset. The whole test aborts if we can't find any.</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>Are we signed</td>
+          <td>Checks if the zone contains a DNSKEY rrset. The whole test aborts if we can't find any.</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>Validation</td>
+          <td>Compares the result from a validating  and a non-validating query(CD bit set vs unset). Fails if only the validating query result returns SERVFAIL.</td>
+          <td>This site doesn't provide detailed debugging information why the validation fails, consult <a href="http://dnsviz.net/" target="_new">DNSViz</a>
+           or <a href="http://dnssec-debugger.verisignlabs.com/" target="_new">Verisign's DNSSEC debugger</a> for further details.
+          </td>
+        </tr>
+        <tr>
+          <td>Trust</td>
+          <td>Checks if there is a DS record in the parent of this zone. Aborts the test if none can be found (Island of security)</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>SHA-2 DS</td>
+          <td>Checks if there is a SHA-2 DS record for every key-tag in the DS SET</td>
+          <td> see <a href="https://tools.ietf.org/html/rfc4509#section-6.2, http://www.iana.org/assignments/ds-rr-types/ds-rr-types.xhtml" target="_new">SHA-1 vs. SHA-256 Considerations for DS Records</a></td>
+        </tr>
+        <tr>
+          <td>RRSIG for every DNSKEY algorithm</td>
+          <td>Checks if there are RRSIGS for every DNSKEY algorithm as required by RFC 4035 section 2.2</td>
+          <td>This "narrow rollover" test ensures that older unbound versions do treat the zone as BOGUS.</td>
+        </tr>
+        <tr>
+          <td>DNSKEY RRSIG for every DS algorithm</td>
+          <td>Checks if there are RRSIGS in the DNSKEY rrset for every DS algorithm as required by RFC 4035 section 2.2</td>
+          <td>This "narrow rollover" test ensures that older unbound versions do treat the zone as BOGUS.</td>
+        </tr>
+        <tr>
+          <td>RRSIG Inception</td>
+          <td>Checks if inception time is at least one hour in the past.</td>
+          <td>Some resolvers with clock skew issues might think the signatures are not yet valid, inception times should take this into consideration. </td>
+        </tr>
+         <tr>
+          <td>RRSIG expiration</td>
+          <td>Checks if expiration times are too far in the future (possibility of replay attacks) or very close (danger of the rrsig expiring)</td>
+          <td></td>
+        </tr>
+          <tr>
+          <td>SOA  expiration vs RRSIG expiration (not yet implemented)</td>
+          <td>risk of SERVFAIL responses from "stale" secondary </td>
+          <td></td>
+        </tr>
+         <tr>
+          <td>Dangling DS</td>
+          <td>Checks if there are DS records with no matching DNSKEY key tags</td>
+          <td>This will return a warning only as there are valid reasons for having dangling DS (stand by keys, double DS rollover)</td>
+        </tr>
+        <tr>
+          <td>Number of DS</td>
+          <td>Checks if there arenot more than two DS records in the parent</td>
+          <td>There is currently no common stand-by/rollover scenario which would require more than two DS</td>
+        </tr>
+        <tr>
+          <td>DNSKEY algorithm </td>
+          <td>This check will complain if there is any non-ECDSA DNSKEY</td>
+          <td>ECDSA providers strong crypto with much smaller key sizes than RSA and is therefore less interesting to be used in DDos reflection attacks. The additional load on resolvers is negligible.
+          </td>
+        </tr>
+        <tr>
+          <td>DNSKEY size </td>
+          <td>This check will complain about weak keys (not let implemented)</td>
+          <td> for example 1024 bit RSA</td>
+        </tr>
+         <tr>
+          <td> number of DNSKEYS</td>
+          <td> check if there are no more than 3 DNSKEYS in the RRSET </td>
+          <td> the fewer the better. CSK setup is favored because of smaller response size. Split key (KSK, ZSK) is ok. Temp. 3 keys during rollover acceptable. KSK and ZSK should not be rolled together to minimize DNSKEY RR Set size. </td>
+        </tr>
+        <tr>
+          <td>NSEC3 Opt-out</td>
+          <td>The NSEC3 Opt-out bit should only be set in zones with many delegations, such as TLDs </td>
+          <td> </td>
+        </tr>
+        <tr>
+          <td>NSEC3 salt / iterations (not yet implemented)</td>
+          <td> check max length/iterations... </td>
+          <td> </td>
+        </tr>
+         <tr>
+          <td>NSEC3 hash algorithm</td>
+          <td> currently, the algorithm must be SHA-1 </td>
+          <td> </td>
+        </tr>
+        <tr>
+          <td> negative answer  size (not yet implemented)</td>
+          <td>  </td>
+          <td> </td>
+        </tr>
+        <tr>
+          <td> response size test(not yet implemented)</td>
+          <td>  </td>
+          <td> </td>
+        </tr>
+      </table>
+
       <footer class="footer">
-        <p>&copy; floki 2016</p>
+        <p>Initial version by the "floki" team on the hackzurich hackathon 2016. </p>
+        <p>Submit bug reports, comments on our tests or questions at our <a target="_new" href="https://github.com/gryphius/dnssecscore_backend">github repository</a>.</p>
       </footer>
 
     </div> <!-- /container -->
